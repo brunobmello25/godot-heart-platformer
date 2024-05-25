@@ -99,3 +99,6 @@ shape = SubResource("RectangleShape2D_epck1")
 [node name="CoytoteJumpTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -32)

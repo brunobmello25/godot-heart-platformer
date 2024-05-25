@@ -7,3 +7,6 @@ extends Resource
 @export var friction = 1000
 @export var gravity_scale = 1.0
 @export var air_resistance = 200.0
+@export var air_acceleration = 400
+@export var air_jump_factor = 0.8
+@export var wall_jump_factor = 0.8
