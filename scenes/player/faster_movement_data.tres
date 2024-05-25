@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerMovementData" load_steps=2 format=3 uid="uid://duil3f2ffdso3"]
+
+[ext_resource type="Script" path="res://scenes/player/player_movement_data.gd" id="1_wwscn"]
+
+[resource]
+script = ExtResource("1_wwscn")
+speed = 120.0
+jump_velocity = -350.0
+acceleration = 1000
+friction = 1000
