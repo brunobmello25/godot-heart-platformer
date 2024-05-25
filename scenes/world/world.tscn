@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd1n80fkoedpm"]
+[gd_scene load_steps=5 format=3 uid="uid://bd1n80fkoedpm"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_776ee"]
 [ext_resource type="PackedScene" uid="uid://dkdg8xdl40pyx" path="res://scenes/player/player.tscn" id="2_m438u"]
+[ext_resource type="PackedScene" uid="uid://dj4tmick0hluu" path="res://scenes/hazard_area/hazard_area.tscn" id="3_s4wjl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m8yyg"]
 size = Vector2(16, 80)
@@ -10,9 +11,10 @@ size = Vector2(16, 80)
 script = ExtResource("1_776ee")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, 0, 16, 0, 16, 112, 56, 112, 88, 144, 120, 144, 152, 120, 184, 120, 184, 168, 224, 168, 224, 120, 256, 120, 280, 120, 304, 112, 304, 0, 320, 0, 320, 184, 0, 184)
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 112, 56, 112, 88, 144, 120, 144, 152, 120, 184, 120, 184, 168, 216, 168, 216, 120, 256, 120, 280, 120, 304, 120, 304, 0, 320, 0, 320, 184, 0, 184)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
@@ -20,6 +22,7 @@ polygon = PackedVector2Array(0, 0, 16, 0, 16, 112, 56, 112, 88, 144, 120, 144, 1
 position = Vector2(32, 96)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(272, 40)
@@ -29,3 +32,9 @@ shape = SubResource("RectangleShape2D_m8yyg")
 offset_left = 264.0
 offset_right = 280.0
 offset_bottom = 80.0
+
+[node name="HazardArea" parent="." instance=ExtResource("3_s4wjl")]
+position = Vector2(184, 168)
+
+[node name="HazardArea2" parent="." instance=ExtResource("3_s4wjl")]
+position = Vector2(200, 168)
