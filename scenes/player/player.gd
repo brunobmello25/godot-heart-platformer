@@ -7,6 +7,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var sprite = $AnimatedSprite2D
 @onready var coyote_timer = $CoytoteJumpTimer
+@onready var starting_position = global_position
 
 var can_air_jump = false
 var just_wall_jumped = false
@@ -113,3 +114,7 @@ func update_animation(input_axis: float):
 
 	if not is_on_floor():
 		sprite.play("jump")
+
+
+func _on_hazard_detector_area_entered(_area):
+	global_position = starting_position

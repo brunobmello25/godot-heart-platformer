@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkdg8xdl40pyx"]
+[gd_scene load_steps=15 format=3 uid="uid://dkdg8xdl40pyx"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_c1y6y"]
 [ext_resource type="Texture2D" uid="uid://xwm4w28ylfl2" path="res://assets/player.png" id="2_bwtgo"]
@@ -81,9 +81,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epck1"]
 size = Vector2(8, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t06dl"]
+size = Vector2(6, 11)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 5
 floor_constant_speed = true
 floor_snap_length = 3.0
 script = ExtResource("1_c1y6y")
@@ -92,7 +94,7 @@ movement_data = ExtResource("2_sjcfc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_2gwji")
-animation = &"run"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -104,3 +106,15 @@ one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -32)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="HazardDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_t06dl")
+
+[connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]

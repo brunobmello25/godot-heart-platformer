@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_776ee"]
 [ext_resource type="PackedScene" uid="uid://dkdg8xdl40pyx" path="res://scenes/player/player.tscn" id="2_m438u"]
-[ext_resource type="PackedScene" uid="uid://dj4tmick0hluu" path="res://scenes/hazard_area/hazard_area.tscn" id="3_s4wjl"]
+[ext_resource type="PackedScene" uid="uid://cs1uxi63fo8mj" path="res://scenes/spikes/spikes.tscn" id="3_rrt4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m8yyg"]
 size = Vector2(16, 80)
@@ -33,8 +33,11 @@ offset_left = 264.0
 offset_right = 280.0
 offset_bottom = 80.0
 
-[node name="HazardArea" parent="." instance=ExtResource("3_s4wjl")]
+[node name="Spikes" parent="." instance=ExtResource("3_rrt4c")]
 position = Vector2(184, 168)
 
-[node name="HazardArea2" parent="." instance=ExtResource("3_s4wjl")]
+[node name="Spikes2" parent="." instance=ExtResource("3_rrt4c")]
 position = Vector2(200, 168)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(32, 96)
