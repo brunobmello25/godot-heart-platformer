@@ -9,6 +9,7 @@ const FRICTION = 1000
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var sprite = $AnimatedSprite2D
+@onready var coyote_timer = $CoytoteJumpTimer
 
 
 func _physics_process(delta: float):
@@ -22,7 +23,9 @@ func _physics_process(delta: float):
 
 	update_animation(input_axis)
 
+	var was_on_floor = is_on_floor()
 	move_and_slide()
+	handle_coyote_jump_timer(was_on_floor)
 
 
 func apply_gravity(delta: float):
@@ -30,11 +33,17 @@ func apply_gravity(delta: float):
 		velocity.y += gravity * delta
 
 
+func handle_coyote_jump_timer(was_on_floor: bool):
+	var just_left_ledge = was_on_floor and not is_on_floor() and velocity.y >= 0
+	if just_left_ledge:
+		coyote_timer.start()
+
+
 func handle_jump():
-	if is_on_floor():
+	if is_on_floor() or coyote_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = JUMP_VELOCITY
-	else:
+	if not is_on_floor():
 		if Input.is_action_just_released("jump") and velocity.y < JUMP_VELOCITY / 2:
 			velocity.y = JUMP_VELOCITY / 2
 
