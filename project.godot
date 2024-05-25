@@ -13,13 +13,14 @@ lEngineconfigurationfile.config_version=5
 [application]
 
 config/name="Heart Platformer"
-run/main_scene="res://scenes/world/world.tscn"
+run/main_scene="res://scenes/level_one/level_one.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Events="*res://scripts/Events.gd"
+LevelTransition="*res://scenes/level_transition/level_transition.tscn"
 
 [display]
 
