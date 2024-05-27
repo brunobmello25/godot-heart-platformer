@@ -10,6 +10,4 @@ func fade_from_black():
 
 func fade_to_black():
 	animation_player.play("fade_to_black")
-	print("before await")
 	await animation_player.animation_finished
-	print("after await")
